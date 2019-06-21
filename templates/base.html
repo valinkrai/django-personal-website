@@ -22,11 +22,12 @@
 	{% block head_css %}
 		{% block head_css_site %}
 			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-			<link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet" media="screen">
+			<link href="{{ STATIC_URL }}css/global.css" rel="stylesheet" media="screen">
 		{% endblock head_css_site %}
 		{% block head_css_section %}{% endblock head_css_section %}
 		{% block head_css_page %}{% endblock head_css_page %}
-	<link rel="stylesheet" type="text/css" href='styles.css'/>
+	{% load static %} 
+	<link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -45,16 +46,16 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						{% block nav-home %}<a class="nav-link" href="{% url 'index' %}">Home</a>{% endblock nav-home %}
+						{% block nav-home %}<a class="nav-link" href="#">Home</a>{% endblock nav-home %}
 					</li>
 					<li class="nav-item">
-							{% block nav-resume %}<a class="nav-link" href="{% url 'resume' %}">Resume</a>{% endblock nav-item %}
+							{% block nav-resume %}<a class="nav-link" href="{% url 'resume' %}">Resume</a>{% endblock nav-resume %}
 					</li>
 					<li class="nav-item">
-							{% block nav-projects %}<a class="nav-link" href="{% url 'projects' %}">Projects</a>{% endblock nav-projects %}
+							{% block nav-projects %}<a class="nav-link" href="#">Projects</a>{% endblock nav-projects %}
 					</li>
 					<li class="nav-item">
-							{% block nav-social %}<a class="nav-link" href="{% url 'social' %}">Social</a>{% endblock nav-social %}
+							{% block nav-social %}<a class="nav-link" href="#">Social</a>{% endblock nav-social %}
 					</li>
 				</ul>
 			</div>

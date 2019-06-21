@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}
+Resume 
+{% endblock title %}
+
+{% block nav-resume %}
+<a class="nav-link" href="#">Resume<span class="sr-only">(current)</span></a>
+{% endblock nav-resume %}
+
+{% block content %}
+<div class="row">
+  <div class='col-xl'>
+    <h1 class='text-light'>Resume</h1>
+    <p class='text-light text-justify'>Skilled in cybersecurity, Linux and network administration, scripting, and automation. Currently work for Cerner as a System Engineer, where I develop Python scripts and Chef for automation to support Cerner's imaging solution that runs on Java/Tomcat. Finished 1st in National Cyber League (Individual) in 2018 and 5th for Teams in 2017, finished 2nd in CCDC Regionals 2017.</p>
+  </div>
+</div>
+<div class="row">
+  <div class='col-xl'>
+  {% for employer in employers %}
+    <div class="card text-white bg-secondary mb-3 w-100">
+      <div class="card-header accent-primary">{{employer.name}}</div>
+      {% for position in employer.position_set.all %}
+      <div class="card-header accent-secondary">{{position.city}}, {{position.state}} <span class='font-italic'>{{position.name}} (2018-Present)</span></div>
+      <div class="card-body">
+        <p class="card-text">{{position.summary}}</p>
+        <ul class="list-group">
+          {% for bullet_point in position.bullet_point_set.all %}
+            <li class="list-group-item list-group-item-dark">{{bullet_point.blurb}}</li>
+          {% endfor %}
+        </ul>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+<div class="row">
+  <div class='col-xl-4'>
+    <div class="card text-white accent-primary mb-3 w-100">
+    <div class="card-header">Skills</div>
+      <ul class="list-group">
+        {% for skill in skills %}
+          <li class="list-group-item list-group-item-dark">{{skill.name}}</li>
+        {% endfor %}
+      </ul>
+    </div><!-- card -->
+  </div><!-- col-xl-4 -->
+  <div class='col-xl-8'>
+    <div class="card text-white accent-primary mb-3 w-100">
+      <div class="card-header">Education</div>
+      <ul class="list-group">
+        {% for education_experience in education %}
+          <li class="list-group-item list-group-item-dark"><a class="text-dark" href="{{education_experience.link}}">{{education_experience.school_name}} - {{education_experience.degree_type}} - {{education_experience.degree_field}}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <br>
+    <div class="card text-white accent-primary mb-3 w-100">
+      <div class="card-header">Awards</div>
+      <ul class="list-group">
+        {% for award in awards %}
+          <li class="list-group-item list-group-item-dark"><a class="text-dark" href="{{award.link}}">{{award.event_string}}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock content %}
