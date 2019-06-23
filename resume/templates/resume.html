@@ -1,12 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}
-Resume 
-{% endblock title %}
+{% block title %}Resume {% endblock title %}
 
-{% block nav-resume %}
-<a class="nav-link" href="#">Resume<span class="sr-only">(current)</span></a>
-{% endblock nav-resume %}
+{% block nav-resume %}<a class="nav-link" href="{% url 'resume' %}">Resume<span class="sr-only">(current)</span></a>{% endblock nav-resume %}
 
 {% block content %}
 <div class="row">
@@ -14,7 +10,7 @@ Resume
     <h1 class='text-light'>Resume</h1>
     <p class='text-light text-justify'>Skilled in cybersecurity, Linux and network administration, scripting, and automation. Currently work for Cerner as a System Engineer, where I develop Python scripts and Chef for automation to support Cerner's imaging solution that runs on Java/Tomcat. Finished 1st in National Cyber League (Individual) in 2018 and 5th for Teams in 2017, finished 2nd in CCDC Regionals 2017.</p>
   </div>
-</div>
+</div> <!--End title/intro row-->
 <div class="row">
   <div class='col-xl'>
   {% for employer in employers %}
@@ -25,16 +21,16 @@ Resume
       <div class="card-body">
         <p class="card-text">{{position.summary}}</p>
         <ul class="list-group">
-          {% for bullet_point in position.bullet_point_set.all %}
+          {% for bullet_point in position.bulletpoint_set.all %}
             <li class="list-group-item list-group-item-dark">{{bullet_point.blurb}}</li>
-          {% endfor %}
+          {% endfor %} 
         </ul>
-        {% endfor %}
       </div>
-    </div>
+     {% endfor %} 
+    </div> <!--End employers-->
   {% endfor %}
-  </div>
-</div>
+  </div> <!--End employment history column-->
+</div> <!--End employment history row-->
 <div class="row">
   <div class='col-xl-4'>
     <div class="card text-white accent-primary mb-3 w-100">

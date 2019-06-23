@@ -54,7 +54,7 @@ class Education(models.Model):
     degree_type = models.CharField(max_length=5)
     degree_field = models.CharField(max_length=50)
     gpa = models.DecimalField(max_digits=2, decimal_places=1)
-    link = models.URLField(null=True)
+    link = models.URLField(null=True, blank=True)
     hide = models.BooleanField()
 
     def __str__(self):
@@ -64,7 +64,7 @@ class Education(models.Model):
 class Award(models.Model):
     """Model representing an award"""
     event_string = models.CharField(max_length=100)
-    link = models.URLField(null=True)
+    link = models.URLField(null=True, blank=True)
     hide = models.BooleanField()
 
     def __str__(self):

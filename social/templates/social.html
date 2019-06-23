@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Social {% endblock title %}
+
+{% block nav-social %}<a class="nav-link" href="{% url 'social' %}">Home<span class="sr-only">(current)</span></a>{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class='col-xl'>
+        <br>
+        <div class="card bg-secondary">
+            <div class="card-header text-white accent-primary ">Social Media</div>
+            <div class="card-body">
+                <div class="list-group">
+                    {% for social_site in social_sites %}
+                    <a href="{{social_site.link}}" class="list-group-item list-group-item-dark list-group-item-action">{{social_site.text}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

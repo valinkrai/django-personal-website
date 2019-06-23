@@ -10,13 +10,13 @@ def resume(request):
     # Retreive models
     employers = Employer.objects.filter(hide=False)
     skills = Skill.objects.filter(hide=False)
-    education_experiences = Education.objects.filter(hide=False)
+    education = Education.objects.filter(hide=False)
     awards = Award.objects.filter(hide=False)
 
     context = {
         'employers': employers,
         'skills': skills,
-        'education_experiences': education_experiences,
+        'education': education,
         'awards': awards
     }
 
