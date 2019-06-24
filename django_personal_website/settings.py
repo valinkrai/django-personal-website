@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home.apps.HomeConfig',
     'resume.apps.ResumeConfig',
-    'social.apps.SocialConfig',
-    'home.apps.HomeConfig'
+    'projects.apps.ProjectsConfig',
+    'social.apps.SocialConfig'
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,8 @@ STATICFILES_DIRS = (
     'static',
     os.path.join(BASE_DIR, 'static'),
 )
+
+# Media files (Uploads)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -22,7 +22,6 @@
 	{% block head_css %}
 		{% block head_css_site %}
 			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-			<link href="{{ STATIC_URL }}css/global.css" rel="stylesheet" media="screen">
 		{% endblock head_css_site %}
 		{% block head_css_section %}{% endblock head_css_section %}
 		{% block head_css_page %}{% endblock head_css_page %}
@@ -52,7 +51,7 @@
 							{% block nav-resume %}<a class="nav-link" href="{% url 'resume' %}">Resume</a>{% endblock nav-resume %}
 					</li>
 					<li class="nav-item">
-							{% block nav-projects %}<a class="nav-link" href="#">Projects</a>{% endblock nav-projects %}
+							{% block nav-projects %}<a class="nav-link" href="{% url 'projects' %}">Projects</a>{% endblock nav-projects %}
 					</li>
 					<li class="nav-item">
 							{% block nav-social %}<a class="nav-link" href="{% url 'social' %}">Social</a>{% endblock nav-social %}
