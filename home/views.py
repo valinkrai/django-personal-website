@@ -9,7 +9,10 @@ def home(request):
 
     # Retreive models
     currently_doing = CurrentlyDoing.objects.filter(hide=False, done=False)
-    bio = Bio.objects.latest('created_date_time')
+    try:
+        bio = Bio.objects.latest('created_date_time')
+    except Bio.DoesNotExist:
+        bio = None
 
     context = {
         'currently_doing': currently_doing,
