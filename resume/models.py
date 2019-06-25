@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Skill(models.Model):
     """Model representing a skill."""
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=30)
     hide = models.BooleanField()
 
     def __str__(self):
@@ -13,7 +13,7 @@ class Skill(models.Model):
 
 class Employer(models.Model):
     """Model representing an employer."""
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
     hide = models.BooleanField()
 
     def __str__(self):
