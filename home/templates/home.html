@@ -9,7 +9,13 @@
     <div class='col-xl'>
         <img src="static/images/trent.jpg" alt="Me and my sister at Disney World's Hollywood Studios" height="191" width="191" alight="left" style="padding-right:10px;float:left">
         <h1 class='text-light'>Bio</h1>
-        <div class='text-light text-justify'>{{bio.text|safe}}</div>
+        <div class='text-light text-justify'>
+        {% if bio.text %}
+        {{bio.text|safe}}
+        {% else %}
+        <p>Hello world! There would be a bio here, but it seems like I haven't added it yet.</p>
+        {% endif %}
+        </div>
     </div>
 </div>
 <div class="row">
