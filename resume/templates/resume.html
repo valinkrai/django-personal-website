@@ -8,7 +8,11 @@
 <div class="row">
   <div class='col-xl'>
     <h1 class='text-light'>Resume</h1>
-    <p class='text-light text-justify'>Skilled in cybersecurity, Linux and network administration, scripting, and automation. Currently work for Cerner as a System Engineer, where I develop Python scripts and Chef for automation to support Cerner's imaging solution that runs on Java/Tomcat. Finished 1st in National Cyber League (Individual) in 2018 and 5th for Teams in 2017, finished 2nd in CCDC Regionals 2017.</p>
+        {% if bio.text %}
+        <p class='text-light text-justify'>{{bio.text|safe}}</p>
+        {% else %}
+        <p class='text-light text-justify'>Hello world! There would be a resume bio here, but it seems like I haven't added it yet.</p>
+        {% endif %}
   </div>
 </div> <!--End title/intro row-->
 <div class="row">
