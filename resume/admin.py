@@ -6,7 +6,7 @@ from resume.models import  Bio, Employer, Position, BulletPoint, Skill, Educatio
 
 class BulletPointInline(admin.TabularInline):
     model = BulletPoint
-    
+
 admin.site.register(Bio)
 admin.site.register(Employer)
 admin.site.register(Skill)
