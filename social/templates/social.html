@@ -8,9 +8,9 @@
 <div class="row">
     <div class='col-xl'>
         <br>
-        <div class="card bg-secondary">
-            <div class="card-header text-white accent-primary ">Social Media</div>
-            <div class="card-body">
+        <div class="card accent-primary">
+            <div class="card-header text-white accent-primary">Social Media</div>
+            <div class="card-body bg-secondary">
                 <div class="list-group">
                     {% for social_site in social_sites %}
                     <a href="{{social_site.link}}" class="list-group-item list-group-item-dark list-group-item-action">{{social_site.text}}</a>

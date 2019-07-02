@@ -10,10 +10,10 @@
             <br>
             <div class="card-columns">
                 {% for project in projects %}
-                <div class="card bg-secondary">
+                <div class="card accent-primary">
                     <div class="card-header text-white accent-primary ">{{project.name}}</div>
                     <img class="card-img-top" src="{{project.image.url}}" alt="{{project.image_alt}}">
-                    <div class="card-body">
+                    <div class="card-body bg-secondary">
                         <p class="card-text">{{project.text}}</p>
                         {% for project_link in project.projectlink_set.all %}
                         <a href="{{project_link.link}}" class="btn btn-primary accent-secondary border-white">{{project_link.name}}</a>
