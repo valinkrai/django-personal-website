@@ -1,3 +1,4 @@
+"""Defines how pages will get rendered"""
 from django.shortcuts import render
 from projects.models import  Project
 
@@ -7,10 +8,12 @@ def projects(request):
     """View function for home page of site."""
 
     # Retreive models
-    projects = Project.objects.filter(hide=False)
+    filtered_projects = Project.objects.filter(hide=False)
 
     context = {
-        'projects': projects
+        'title': 'Projects',
+        'uri': request.path,
+        'projects': filtered_projects
     }
 
     # Render the HTML template index.html with the data in the context variable

@@ -19,6 +19,8 @@ def resume(request):
     awards = Award.objects.filter(hide=False)
 
     context = {
+        'title': 'Resume',
+        'uri': request.path,
         'bio': bio,
         'employers': employers,
         'skills': skills,

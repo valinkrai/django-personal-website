@@ -2,16 +2,16 @@
 
 {% block title %}Resume {% endblock title %}
 
-{% block nav-resume %}<a class="nav-link" href="{% url 'resume' %}">Resume<span class="sr-only">(current)</span></a>{% endblock nav-resume %}
+{% block nav-resume %}<a class="nav-link active" href="{% url 'resume' %}">Resume<span class="sr-only">(current)</span></a>{% endblock nav-resume %}
 
 {% block content %}
 <div class="row">
   <div class='col-xl'>
     <h1 class='text-light'>Resume</h1>
         {% if bio.text %}
-        <p class='text-light text-justify'>{{bio.text|safe}}</p>
+        <p class='text-light'>{{bio.text|safe}}</p>
         {% else %}
-        <p class='text-light text-justify'>Hello world! There would be a resume bio here, but it seems like I haven't added it yet.</p>
+        <p class='text-light'>Hello world! There would be a resume bio here, but it seems like I haven't added it yet.</p>
         {% endif %}
   </div>
 </div> <!--End title/intro row-->
@@ -26,7 +26,7 @@
         <p class="card-text">{{position.summary}}</p>
         <ul class="list-group">
           {% for bullet_point in position.bulletpoint_set.all %}
-            <li class="list-group-item list-group-item-dark">{{bullet_point.blurb}}</li>
+            <li class="list-group-item list-group-item-dark bullet-point">{{bullet_point.blurb}}</li>
           {% endfor %} 
         </ul>
       </div>
@@ -51,7 +51,7 @@
       <div class="card-header">Education</div>
       <ul class="list-group">
         {% for education_experience in education %}
-          <li class="list-group-item list-group-item-dark"><a class="text-dark" href="{{education_experience.link}}">{{education_experience.school_name}} - {{education_experience.degree_type}} - {{education_experience.degree_field}}</a></li>
+          <li class="list-group-item list-group-item-dark bg-secondary"><a class="text-light" href="{{education_experience.link}}">{{education_experience.school_name}} - {{education_experience.degree_type}} - {{education_experience.degree_field}}</a></li>
         {% endfor %}
       </ul>
     </div>
