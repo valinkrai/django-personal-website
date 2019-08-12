@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load resume_tags %}
+
 
 {% block title %}Resume {% endblock title %}
 
@@ -20,7 +22,7 @@
   {% for employer in employers %}
     <div class="card text-white accent-primary mb-3 w-100">
       <div class="card-header accent-primary">{{employer.name}}</div>
-      {% for position in employer.position_set.all %}
+      {% for position in employer.position_set.all|sort_by:'-end_date' %}
       <div class="card-header accent-secondary">{{position.city}}, {{position.state}} <span class='font-italic'>{{position.name}} ({{position.start_date|date:'F Y'}} –⁠ {% if position.end_date %}{{position.end_date|date:'F Y'}}{% else %}Present{% endif %})</span></div>
       <div class="card-body bg-secondary ">
         <p class="card-text">{{position.summary}}</p>
@@ -52,7 +54,7 @@
       <ul class="list-group">
         {% for education_experience in education %}
           <li class="list-group-item list-group-item-dark bg-secondary"><a class="text-light" href="{{education_experience.link}}">{{education_experience.school_name}} - {{education_experience.degree_type}} - {{education_experience.degree_field}}</a></li>
-        {% endfor %}
+        {% endfor %}  
       </ul>
     </div>
     <br>
