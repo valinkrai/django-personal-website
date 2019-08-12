@@ -43,7 +43,7 @@
     <div class="card-header">Skills</div>
       <ul class="list-group">
         {% for skill in skills %}
-          <li class="list-group-item list-group-item-dark">{{skill.name}}</li>
+          <li class="list-group-item list-group-item-dark bg-secondary">{{skill.name}}</li>
         {% endfor %}
       </ul>
     </div><!-- card -->
@@ -62,7 +62,7 @@
       <div class="card-header">Awards</div>
       <ul class="list-group">
         {% for award in awards %}
-          <li class="list-group-item list-group-item-dark"><a class="text-dark" href="{{award.link}}">{{award.event_string}}</a></li>
+          <li class="list-group-item list-group-item-dark bg-secondary"><a class="text-dark" href="{{award.link}}">{{award.event_string}}</a></li>
         {% endfor %}
       </ul>
     </div>

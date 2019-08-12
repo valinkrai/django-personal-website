@@ -14,7 +14,7 @@ def resume(request):
     except Bio.DoesNotExist:
         bio = None
 
-    employers = Employer.objects.filter(hide=False).annotate(ed=Max('position__end_date')).order_by('ed')
+    employers = Employer.objects.filter(hide=False).annotate(ed=Max('position__end_date')).order_by('-ed')
     skills = Skill.objects.filter(hide=False)
     education = Education.objects.filter(hide=False)
     awards = Award.objects.filter(hide=False)
