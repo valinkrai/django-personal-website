@@ -10,8 +10,8 @@
             <br>
             <div class="card-columns">
                 {% for project in projects %}
-                <div class="card accent-primary">
-                    <div class="card-header text-white accent-primary ">{{project.name}}</div>
+                <div class="card text-light bg-transparent">
+                    <div class="card-header accent-primary">{{project.name}}</div>
                     <img class="card-img-top" src="{{project.image.url}}" alt="{{project.image_alt}}">
                     <div class="card-body bg-secondary">
                         <p class="card-text">{{project.text}}</p>

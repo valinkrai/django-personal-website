@@ -20,7 +20,7 @@
 <div class="row">
   <div class='col-xl'>
   {% for employer in employers %}
-    <div class="card text-white accent-primary mb-3 w-100">
+    <div class="card text-light bg-transparent mb-3 w-100">
       <div class="card-header accent-primary">{{employer.name}}</div>
       {% for position in employer.position_set.all|sort_by:'-end_date' %}
       <div class="card-header accent-secondary">{{position.city}}, {{position.state}} <span class='font-italic'>{{position.name}} ({{position.start_date|date:'F Y'}} –⁠ {% if position.end_date %}{{position.end_date|date:'F Y'}}{% else %}Present{% endif %})</span></div>
@@ -39,8 +39,8 @@
 </div> <!--End employment history row-->
 <div class="row">
   <div class='col-xl-4'>
-    <div class="card text-white accent-primary mb-3 w-100">
-    <div class="card-header">Skills</div>
+    <div class="card text-light bg-transparent mb-3 w-100">
+    <div class="card-header accent-primary">Skills</div>
       <ul class="list-group">
         {% for skill in skills %}
           <li class="list-group-item list-group-item-dark bg-secondary text-light">{{skill.name}}</li>
@@ -49,20 +49,20 @@
     </div><!-- card -->
   </div><!-- col-xl-4 -->
   <div class='col-xl-8'>
-    <div class="card text-white accent-primary mb-3 w-100">
-      <div class="card-header">Education</div>
+    <div class="card text-light bg-transparent mb-3 w-100">
+      <div class="card-header accent-primary">Education</div>
       <ul class="list-group">
         {% for education_experience in education %}
-          <li class="list-group-item list-group-item-dark bg-secondary"><a class="text-light" href="{{education_experience.link}}">{{education_experience.school_name}} - {{education_experience.degree_type}} - {{education_experience.degree_field}}</a></li>
+          <a class="list-group-item list-group-item-dark bg-secondary list-group-item-action text-light" href="{{education_experience.link}}">{{education_experience.school_name}} - {{education_experience.degree_type}} - {{education_experience.degree_field}}</a>
         {% endfor %}  
       </ul>
     </div>
     <br>
-    <div class="card text-white accent-primary mb-3 w-100">
-      <div class="card-header">Awards</div>
+    <div class="card text-light bg-transparent mb-3 w-100">
+      <div class="card-header accent-primary">Awards</div>
       <ul class="list-group">
         {% for award in awards %}
-          <li class="list-group-item list-group-item-dark bg-secondary"><a class="text-light" href="{{award.link}}">{{award.event_string}}</a></li>
+          <a class="list-group-item list-group-item-dark bg-secondary list-group-item-action text-light" href="{{award.link}}">{{award.event_string}}</a>
         {% endfor %}
       </ul>
     </div>
