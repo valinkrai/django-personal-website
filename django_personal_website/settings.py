@@ -90,6 +90,7 @@ WSGI_APPLICATION = 'django_personal_website.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 if os.environ.get('DJANGO_POSTGRES'):
+    print("DB: postgres docker is go")
     # settings.py
     DATABASES = {
         'default': {
@@ -101,6 +102,7 @@ if os.environ.get('DJANGO_POSTGRES'):
         }
     }
 elif PROD:
+    print("DB: postgres psycopg2 is go")
     with open(os.path.join(BASE_DIR, 'database.password')) as f:
         PROD_DB_PW = f.read().strip()
 
@@ -115,6 +117,7 @@ elif PROD:
         }
     }
 else:
+    print("DB: sqlite is go")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
