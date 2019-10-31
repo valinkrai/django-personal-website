@@ -15,7 +15,9 @@ import uuid
 
 # Determine if production or test server
 PRODUCTION_UUIDS = [56817295373]
-if uuid.getnode() in PRODUCTION_UUIDS:
+
+# Assume Dev if no prod flag
+if os.environ.get('DJANGO_ENVIRONMENT') == 'PROD':
     PROD = True
 else:
     PROD = False
@@ -28,8 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open(os.path.join(BASE_DIR, 'secret.key')) as f:
-    SECRET_KEY = f.read().strip()
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not PROD
@@ -88,8 +89,17 @@ WSGI_APPLICATION = 'django_personal_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if PROD:
-
+if os.environ.get('DJANGO_POSTGRES'):
+    # settings.py
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'HOST': 'db', # set in docker-compose.yml
+            'PORT': 5432 # default postgres port
+        }
+elif PROD:
     with open(os.path.join(BASE_DIR, 'database.password')) as f:
         PROD_DB_PW = f.read().strip()
 
