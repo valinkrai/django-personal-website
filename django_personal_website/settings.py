@@ -99,6 +99,7 @@ if os.environ.get('DJANGO_POSTGRES'):
             'HOST': 'db', # set in docker-compose.yml
             'PORT': 5432 # default postgres port
         }
+    }
 elif PROD:
     with open(os.path.join(BASE_DIR, 'database.password')) as f:
         PROD_DB_PW = f.read().strip()
