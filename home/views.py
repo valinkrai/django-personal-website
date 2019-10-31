@@ -15,6 +15,8 @@ def home(request):
         bio = None
 
     context = {
+        'title': 'Home',
+        'uri': request.path,
         'currently_doing': currently_doing,
         'bio': bio
     }

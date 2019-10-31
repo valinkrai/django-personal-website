@@ -1,5 +1,5 @@
 from django.contrib import admin
-from resume.models import  Employer, Position, BulletPoint, Skill, Education, Award
+from resume.models import  Bio, Employer, Position, BulletPoint, Skill, Education, Award
 # Register your models here.
 
 
@@ -7,6 +7,7 @@ from resume.models import  Employer, Position, BulletPoint, Skill, Education, Aw
 class BulletPointInline(admin.TabularInline):
     model = BulletPoint
 
+admin.site.register(Bio)
 admin.site.register(Employer)
 admin.site.register(Skill)
 admin.site.register(Education)

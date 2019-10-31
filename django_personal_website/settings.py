@@ -11,6 +11,14 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import uuid
+
+# Determine if production or test server
+PRODUCTION_UUIDS = [56817295373]
+if uuid.getnode() in PRODUCTION_UUIDS:
+    PROD = True
+else:
+    PROD = False
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +32,7 @@ with open(os.path.join(BASE_DIR, 'secret.key')) as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = not PROD
 
 ALLOWED_HOSTS = ['trenton.io', 'www.trenton.io', 'test.trenton.io', '127.0.0.1']
 
@@ -80,12 +88,28 @@ WSGI_APPLICATION = 'django_personal_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if PROD:
+
+    with open(os.path.join(BASE_DIR, 'database.password')) as f:
+        PROD_DB_PW = f.read().strip()
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'django_personal_website',
+            'USER': 'django',
+            'PASSWORD': PROD_DB_PW,
+            'HOST': 'localhost',
+            'PORT': '',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
@@ -137,15 +161,16 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Security
-#SECURE_HSTS_SECONDS = 60
-#SECURE_HSTS_INCLUDE_SUBDOMAINS = False ## Update later
-#SECURE_HSTS_PRELOAD = True
-#SECURE_CONTENT_TYPE_NOSNIFF = True
-#SECURE_SSL_REDIRECT = True
-#SESSION_COOKIE_SECURE = True
-#CSRF_COOKIE_SECURE = True
-#SECURE_BROWSER_XSS_FILTER = True
-#X_FRAME_OPTIONS = 'DENY'
+if PROD:
+    SECURE_HSTS_SECONDS = 60
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = False ## Update later
+    SECURE_HSTS_PRELOAD = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_BROWSER_XSS_FILTER = True
+    X_FRAME_OPTIONS = 'DENY'
 
 # Email
 DEFAULT_FROM_EMAIL = 'noreply@www.trenton.io'

@@ -2,14 +2,14 @@
 
 {% block title %}Home {% endblock title %}
 
-{% block nav-home %}<a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>{% endblock %}
+{% block nav-home %}<a class="nav-link active" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>{% endblock %}
 
 {% block content %}
 <div class="row">
     <div class='col-xl'>
         <img src="static/images/trent.jpg" alt="Me and my sister at Disney World's Hollywood Studios" height="191" width="191" alight="left" style="padding-right:10px;float:left">
         <h1 class='text-light'>Bio</h1>
-        <div class='text-light text-justify'>
+        <div class='text-light'>
         {% if bio.text %}
         {{bio.text|safe}}
         {% else %}
@@ -20,9 +20,9 @@
 </div>
 <div class="row">
     <div class='col-xl'>
-            <div class="card bg-secondary">
-                <div class="card-header text-white accent-primary ">What I'm doing right now</div>
-                <div class="card-body">
+            <div class="card bg-transparent">
+                <div class="card-header text-light accent-primary">What I'm doing right now</div>
+                <div class="card-body bg-secondary">
                     <div class="list-group">
                     {% for thing_im_doing in currently_doing %}
                         <li class="list-group-item list-group-item-dark">{{thing_im_doing.text}}</li>
