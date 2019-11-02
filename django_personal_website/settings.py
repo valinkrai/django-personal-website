@@ -159,7 +159,7 @@ USE_L10N = True
 USE_TZ = True
 
 # Final directory for serving static files
-SRV_DR = '/srv/'
+SRV_DIR = '/srv/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
