@@ -176,7 +176,7 @@ STATIC_ROOT=os.path.join(SRV_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(SRV_DIR, 'media')
 
-# Securityc
+# Security
 if PROD:
     SECURE_HSTS_SECONDS = 60
     SECURE_HSTS_INCLUDE_SUBDOMAINS = False ## Update later
