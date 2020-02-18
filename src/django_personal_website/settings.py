@@ -112,7 +112,7 @@ elif PROD:
             'NAME': 'django_personal_website',
             'USER': 'django',
             'PASSWORD': PROD_DB_PW,
-            'HOST': 'localhost',
+            'HOST': 'db',
             'PORT': '',
         }
     }
