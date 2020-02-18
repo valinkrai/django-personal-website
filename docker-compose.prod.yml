@@ -17,8 +17,8 @@ services:
       - /data/media:/srv/media
     env_file:
       - ./docker/.env.prod
-    ports:
-      - 8000:8000
+    expose:
+      - 8000
     depends_on:
       - db
   
