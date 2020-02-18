@@ -35,7 +35,7 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not PROD
 
-ALLOWED_HOSTS = ['trenton.io', 'www.trenton.io', 'bradley.thegrid.trenton.io','www.thegrid.trenton.io','test.trenton.io', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['trenton.io', 'www.trenton.io', 'bradley.thegrid.trenton.io','alan.thegrid.trenton.io','www.thegrid.trenton.io','test.trenton.io', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -97,7 +97,6 @@ if os.environ.get('DJANGO_POSTGRES'):
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'postgres',
             'USER': 'postgres',
-            'PASSWORD': os.environ.get('DJANGO_POSTGRES'),
             'HOST': 'db', # set in docker-compose.yml
             'PORT': 5432 # default postgres port
         }
