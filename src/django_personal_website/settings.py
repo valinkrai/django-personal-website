@@ -97,6 +97,7 @@ if os.environ.get('DJANGO_POSTGRES'):
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'postgres',
             'USER': 'postgres',
+            'PASSWORD': os.environ.get('DJANGO_POSTGRES');
             'HOST': 'db', # set in docker-compose.yml
             'PORT': 5432 # default postgres port
         }
