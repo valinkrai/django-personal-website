@@ -2,8 +2,8 @@ FROM nginx:alpine
 
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx-default.conf.template /etc/nginx/conf.d/default.conf.template
-COPY docker-entrypoint.sh /
+COPY entrypoint.sh /
 
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
