@@ -17,7 +17,7 @@ server {
 
 server {
 
-    listen 443;
+    listen 443 ssl;
     server_name ${NGINX_SERVER_NAME};
     
     ssl_certificate /etc/letsencrypt/live/${NGINX_SERVER_NAME}/fullchain.pem;
