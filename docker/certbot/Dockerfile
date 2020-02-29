@@ -1,4 +1,4 @@
-FROM certbot:cloudflare-dns
+FROM certbot/cloudflare-dns
 
 COPY cloudflare.key /cloudflare.key
 RUN chmod +x /entrypoint.sh
