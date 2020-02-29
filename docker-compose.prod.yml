@@ -27,6 +27,8 @@ services:
     volumes: 
       - /data/certbot/conf:/etc/letsencrypt
       - /data/certbot/www:/var/www/certbot
+    env_file:
+      - ./docker/.env.certbot
     entrypoint: "/entrypoint.sh"
   
   nginx:
