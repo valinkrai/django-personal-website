@@ -35,8 +35,7 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not PROD
 
-ALLOWED_HOSTS = ['trenton.io', 'www.trenton.io', 'bradley.thegrid.trenton.io','alan.thegrid.trenton.io','www.thegrid.trenton.io','test.trenton.io', 'localhost', '127.0.0.1']
-
+ALLOWED_HOSTS = os.environ["DJANGO_SECRET_KEY"].split(',')
 
 # Application definition
 
