@@ -188,6 +188,4 @@ if PROD:
     X_FRAME_OPTIONS = 'DENY'
 
 # Email
-DEFAULT_FROM_EMAIL = 'noreply@www.trenton.io'
-
-# TEST 3
+DEFAULT_FROM_EMAIL = 'noreply@trenton.io'
