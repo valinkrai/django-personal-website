@@ -46,6 +46,7 @@ COPY --from=intermediate /django-personal-website/ /app/
 
 # Copy entry point
 COPY ./entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
 # run entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
