@@ -35,7 +35,8 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not PROD
 
-ALLOWED_HOSTS = os.environ["DJANGO_SECRET_KEY"].split(',')
+ALLOWED_HOSTS = os.environ["DJANGO_DOMAIN_LIST"].split(',')
+print(f"Starting website with domain list of {ALLOWED_HOSTS}")
 
 # Application definition
 
@@ -181,13 +182,11 @@ if PROD:
     SECURE_HSTS_INCLUDE_SUBDOMAINS = False ## Update later
     SECURE_HSTS_PRELOAD = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True
     X_FRAME_OPTIONS = 'DENY'
 
 # Email
-DEFAULT_FROM_EMAIL = 'noreply@www.trenton.io'
-
-# TEST 3
+DEFAULT_FROM_EMAIL = 'noreply@trenton.io'
