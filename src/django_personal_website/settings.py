@@ -17,7 +17,7 @@ import uuid
 PRODUCTION_UUIDS = [56817295373]
 
 # Assume Dev if no prod flag
-if os.environ.get('DJANGO_ENVIRONMENT') == 'PROD':
+if os.environ.get('PROD') == 'true':
     PROD = True
 else:
     PROD = False
