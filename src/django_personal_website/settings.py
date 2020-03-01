@@ -15,7 +15,9 @@ import uuid
 
 # Determine if production or test server
 PRODUCTION_UUIDS = [56817295373]
-if uuid.getnode() in PRODUCTION_UUIDS:
+
+# Assume Dev if no prod flag
+if os.environ.get('DJANGO_ENVIRONMENT') == 'PROD':
     PROD = True
 else:
     PROD = False
@@ -28,13 +30,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open(os.path.join(BASE_DIR, 'secret.key')) as f:
-    SECRET_KEY = f.read().strip()
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not PROD
 
-ALLOWED_HOSTS = ['trenton.io', 'www.trenton.io', 'test.trenton.io', '127.0.0.1']
+ALLOWED_HOSTS = ['trenton.io', 'www.trenton.io', 'bradley.thegrid.trenton.io','alan.thegrid.trenton.io','www.thegrid.trenton.io','test.trenton.io', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -88,8 +89,20 @@ WSGI_APPLICATION = 'django_personal_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if PROD:
-
+if os.environ.get('DJANGO_POSTGRES'):
+    print("DB: postgres docker is go")
+    # settings.py
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'HOST': 'db', # set in docker-compose.yml
+            'PORT': 5432 # default postgres port
+        }
+    }
+elif PROD:
+    print("DB: postgres psycopg2 is go")
     with open(os.path.join(BASE_DIR, 'database.password')) as f:
         PROD_DB_PW = f.read().strip()
 
@@ -99,11 +112,12 @@ if PROD:
             'NAME': 'django_personal_website',
             'USER': 'django',
             'PASSWORD': PROD_DB_PW,
-            'HOST': 'localhost',
+            'HOST': 'db',
             'PORT': '',
         }
     }
 else:
+    print("DB: sqlite is go")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -144,21 +158,23 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Final directory for serving static files
+SRV_DIR = '/srv/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
-STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     'static',
     os.path.join(BASE_DIR, 'static'),
 )
 
-# Media files (Uploads)
+STATIC_URL = '/static/'
+STATIC_ROOT=os.path.join(SRV_DIR, 'static')
 
+# Media files (Uploads)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(SRV_DIR, 'media')
 
 # Security
 if PROD:
@@ -174,3 +190,5 @@ if PROD:
 
 # Email
 DEFAULT_FROM_EMAIL = 'noreply@www.trenton.io'
+
+# TEST 3
