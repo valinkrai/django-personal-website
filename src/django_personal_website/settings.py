@@ -36,6 +36,7 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 DEBUG = not PROD
 
 ALLOWED_HOSTS = os.environ["DJANGO_DOMAIN_LIST"].split(',')
+print(f"Starting website with domain list of {ALLOWED_HOSTS}")
 
 # Application definition
 
