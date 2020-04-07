@@ -1,3 +1,7 @@
+# Author: Trenton Taylor
+# Purpose: Django/website spinup
+# Desc: Sets up docker using local directories for persistant storage
+
 version: '3.7'
 
 services:
@@ -31,6 +35,7 @@ services:
     entrypoint: "/entrypoint.sh"
   
   nginx:
+    restart: always  
     build: ./docker/nginx
     volumes:
       - /data/static/:/srv/static
@@ -45,4 +50,3 @@ services:
       - web
       - certbot
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-    restart: on-failure
