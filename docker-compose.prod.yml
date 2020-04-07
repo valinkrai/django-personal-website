@@ -1,3 +1,6 @@
+# Author: Trenton Taylor
+# Purpose: Django/website spinup
+
 version: '3.7'
 
 services:
