@@ -27,7 +27,7 @@ RUN mkdir -p /root/.ssh/ && \
 RUN git clone --branch "$GIT_BRANCH" git@github.com:valinkrai/django-personal-website.git
 
 # Pull base image
-FROM python:3.7-slim
+FROM python:3.10-slim
 
 # Set environment varibles
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -44,7 +44,7 @@ COPY Pipfile Pipfile.lock /app/
 RUN pipenv install --system
 
 # Copy project
-COPY --from=intermediate /django-personal-website/ /app/
+COPY --from=intermediate /django-personal-website/src/ /app/
 
 # Copy entry point
 COPY ./entrypoint.sh /app/entrypoint.sh
